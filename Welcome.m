@@ -54,7 +54,7 @@
     [ADBMobile trackAction:@"button_click" data:button8];
     
     // handles authState change to 'logged out'; uses data source IC instead of DPID:
-    [ADBMobile visitorSyncIdentifiers:@{@"ags163CRM":@"88956229"}
+    [ADBMobile visitorSyncIdentifiers:@{@"ags163CRM":@"88956229"} // need to update customerId here
                 authenticationState:ADBMobileVisitorAuthenticationStateLoggedOut];
     
     // UIViewAlert
