@@ -16,21 +16,18 @@
 @end
 
 @implementation CouponView {
-    int number; // testing for number generator; added this here
+    int number; 
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /* My edits start here
-     * Adobe Tracking - Analytics
-     *
+    /* Adobe Tracking - Analytics
      * call to trackState:data: increments page views
      */
     
     [ADBMobile trackState:@"Coupon screen" data:nil];
-    
-    // testing for number generator:
+
     number = 0;
 }
 
@@ -38,15 +35,13 @@
     [super didReceiveMemoryWarning];
 }
 
-    // THIS WORKS: Generate number on 'Test Order Submit' button:
-
 - (IBAction)generateNumber:(id)sender {
+    // Proxy for purchaseId
     number = arc4random() % + 1000000 + 9999999;
     NSString * randomNumber = [NSString stringWithFormat:@"%i", number];
-    
-    
+   
     // Prepend to random:
-    NSString * prefix = @"z";
+    NSString * prefix = @"z"; // indicates mobile purchase for classification
     NSString * purchaseId = [prefix stringByAppendingString:randomNumber];
     
     
@@ -78,30 +73,5 @@
     self.dataLabel.text = [self.dataObject description];
 }
 
-
-/* for Target test
-
-// this is content location (mbox)
- 
- - (IBAction)targetMbox:(id)sender {
-     NSDictionary * parametersTarget = @{
-        @"couponCode1":@"FREESHIP",
-        @"couponCode2":@"20OFF"};
- }
-
- what about this?
-- (UIDynamicItemBehavior)
-*/
-
-
-/* Need to create mbox here:
-
-ADBTargetLocationRequest * myRequest =
- [ADBMobile targetCreateRequestWithName:@"TargetCouponCode"
- defaultContent:@"Free Shipping! Use code FREESHIP" parameters: parametersTarget];
- 
-* need to figure out parameters in ADBTargetLocationRequest call
- 
-*/
 
 @end
