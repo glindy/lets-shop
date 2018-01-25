@@ -15,19 +15,17 @@
 @end
 
 @implementation SignInView {
-    int number; // test 1/24 - adding property here for random ID below
+    int number; 
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    /* My edits start here
-     * Adobe Tracking - Analytics
-     *
+    /* Adobe Tracking - Analytics
      * call to trackState:data: increments page views
      */
     
-    number = 0; // for customerID generation
+    number = 0; 
     
     [ADBMobile trackState:@"Login screen" data:nil];
 }
@@ -42,10 +40,8 @@
 }
 
 - (IBAction)button6Click:(id)sender {
-    
-    // begin test...
      
-     number = arc4random() %  + 2014 + 88956229;
+     number = arc4random() %  + 2014 + 88956229; // generates random %08 for customerId
      NSString * customerId = [NSString stringWithFormat:@"%i", number];
      
      NSMutableDictionary * eVar4 = [NSMutableDictionary dictionary];
@@ -58,25 +54,6 @@
      // handles ID sync via MCID + auth state [1]; uses data source IC instead of DPID:
     [ADBMobile visitorSyncIdentifiers:@{@"ags163CRM":@[customerId]}
                   authenticationState:ADBMobileVisitorAuthenticationStateAuthenticated];
-     
-     
-
-     // ... end test
-
-    
-    /* ORIGINAL...
-     
-    NSMutableDictionary * eVar4 = [NSMutableDictionary dictionary];
-    [eVar4 setObject:@"submit" forKey:@"mobileSiteSection"];
-    [eVar4 setValue:@"88956229" forKey:@"app.customerId"];
-
-    [ADBMobile trackAction:@"logins" data:eVar4];
-    
-    // handles ID sync via MCID + auth state [1]; uses data source IC instead of DPID:
-    [ADBMobile visitorSyncIdentifiers:@{@"ags163CRM":@"88956229"}
-                  authenticationState:ADBMobileVisitorAuthenticationStateAuthenticated];
-  
-     */
     
     // UIAlertView
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Welcome back!"
