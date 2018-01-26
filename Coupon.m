@@ -5,7 +5,7 @@
 //  Created by gentry on 7/18/17.
 //  Copyright © 2017 gentry. All rights reserved.
 //
-// FOR TARGET TESTING
+
 
 #import <Foundation/Foundation.h>
 #import "Coupon.h"
