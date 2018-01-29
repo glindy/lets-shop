@@ -47,7 +47,7 @@
     
     NSMutableDictionary * purchase = [NSMutableDictionary dictionary];
     [purchase setObject:@"order" forKey:@"mobileSiteSection"];
-    [purchase setValue:@{@"app.purchaseId": purchaseId} forKey:@"app.purchaseId"];
+    [purchase setValue:@[purchaseId] forKey:@"app.purchaseId"];
     NSLog(@"app.purchaseId:%@", purchaseId);
 
     [ADBMobile trackAction:@"orders" data:purchase];
