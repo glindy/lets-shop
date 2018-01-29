@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Welcome.h"
 #import "ADBMobile.h"
+#import "AppDelegate.h"
 
 @interface Welcome ()
 
@@ -53,9 +54,13 @@
     
     [ADBMobile trackAction:@"button_click" data:button8];
     
-    // handles authState change to 'logged out'; uses data source IC instead of DPID:
-    [ADBMobile visitorSyncIdentifiers:@{@"ags163CRM":@"88956229"} // need to update customerId here
+    AppDelegate * customerId = (AppDelegate * )([[UIApplication sharedApplication] delegate]);
+        NSString * logoutId = customerId.customerId;
+    
+    [ADBMobile visitorSyncIdentifiers:@{@"ags163CRM":@[logoutId]}
                 authenticationState:ADBMobileVisitorAuthenticationStateLoggedOut];
+    
+
     
     // UIViewAlert
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Goodbye"
