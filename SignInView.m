@@ -47,7 +47,7 @@
      
      NSMutableDictionary * eVar4 = [NSMutableDictionary dictionary];
      [eVar4 setObject:@"submit" forKey:@"mobileSiteSection"];
-     [eVar4 setValue:@{@"app.customerId": customerId} forKey:@"app.customerId"];
+     [eVar4 setValue:@[customerId] forKey:@"app.customerId"];
         NSLog(@"app.customerId:%@", customerId);
      
      [ADBMobile trackAction:@"logins" data:eVar4];
