@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SignInView.h"
 #import "ADBMobile.h"
+#import "AppDelegate.h"
 
 @interface SignInView ()
 
@@ -54,6 +55,9 @@
      // handles ID sync via MCID + auth state [1]; uses data source IC instead of DPID:
     [ADBMobile visitorSyncIdentifiers:@{@"ags163CRM":@[customerId]}
                   authenticationState:ADBMobileVisitorAuthenticationStateAuthenticated];
+    
+    AppDelegate * sharedData = (AppDelegate * )([[UIApplication sharedApplication] delegate]);
+            sharedData.customerId = customerId;
     
     // UIAlertView
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:@"Welcome back!"
